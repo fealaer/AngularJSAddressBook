@@ -39,15 +39,25 @@ module.exports = function(config) {
     // - IE (only Windows)
     browsers: ['Chrome'],
 
+    plugins: [
+      'karma-jasmine',
+      'karma-ng-scenario',
+      'karma-script-launcher',
+      'karma-chrome-launcher',
+      'karma-firefox-launcher',
+      'karma-phantomjs-launcher'
+    ],
+
+    urlRoot: '/_karma_/',
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false
+    singleRun: true,
 
     // Uncomment the following lines if you are using grunt's server to run the tests
-    // proxies: {
-    //   '/': 'http://localhost:9000/'
-    // },
+    proxies: {
+       '/': 'http://localhost:9000/'
+    }
     // URL root prevent conflicts with the site root
     // urlRoot: '_karma_'
   });

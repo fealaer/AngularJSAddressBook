@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angularJsaddressBookApp', [
+angular.module('mainApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
