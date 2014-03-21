@@ -1,36 +1,80 @@
-<div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#">About</a></li>
-    <li><a ng-href="#">Contact</a></li>
-  </ul>
-  <h3 class="text-muted">AngularJSAddressBook</h3>
+<div class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <button type="button"
+                class="navbar-toggle"
+                data-toggle="collapse"
+                data-target=".navbar-collapse">
+            <span class="sr-only">{{'Toggle navigation'|l10n:lang}}</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <strong class="navbar-brand">{{'Contacts'|l10n:lang}}</strong>
+    </div>
+    <div class="collapse navbar-collapse">
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <input type="text"
+                       class="form-control"
+                       ng-model="searchString"
+                       placeholder="{{'Search'|l10n:lang}}">
+            </div>
+        </form>
+        <div class="btn-group navbar-btn pull-right">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    {{'Language'|l10n:lang}} <b class="caret"></b>
+                </button>
+                <ul class="dropdown-menu lang">
+                    <li ng-repeat="langVariant in langVariants"
+                        ng-class="{active:langVariant.id === lang}"
+                        id="{{langVariant.id}}">
+                        <a href="#/{{langVariant.id}}">{{langVariant.title|l10n:lang}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    {{'Sort by'|l10n:lang}} <b class="caret"></b>
+                </button>
+                <ul class="dropdown-menu sort">
+                    <li ng-repeat="sortByVariant in sortByVariants"
+                        ng-class="{active:sortByVariant.selected}"
+                        id="{{sortByVariant.id}}">
+                        <a ng-click="sortBy(sortByVariant);"
+                           href="">{{sortByVariant.title|l10n:lang}}
+                            <span ng-show="sortByVariant.selected && !reverse"
+                                  class="glyphicon glyphicon-chevron-down pull-right"></span>
+                            <span ng-show="sortByVariant.selected && reverse"
+                                  class="glyphicon glyphicon-chevron-up pull-right"></span></a>
+                    </li>
+                </ul>
+            </div>
+            <button class="btn btn-success">
+                <span class="glyphicon glyphicon-plus"></span> {{'New'|l10n:lang}}
+            </button>
+            </div>
+    </div>
 </div>
-
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
-</div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
-
-<div class="footer">
-  <p>♥ from the Yeoman team</p>
+<div class="media contact"
+     ng-repeat="contact in contacts | filter:searchString | orderBy:sort:reverse">
+    <img class="media-object img-responsive pull-left"
+         src="/images/blue-user-icon-64.png"
+         alt="user">
+    <div class="media-body">
+        <div class="row">
+            <div class="col-lg-9 col-sm-9 col-md-9 col-xs-7">
+                <div>
+                    <strong class="media-heading">{{makeTitle(contact)}}</strong>
+                </div>
+                <div>{{contact.phoneNumber}}</div>
+            </div>
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xs-5">
+                <div class="btn-group pull-right">
+                    <button class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></button>
+                    <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
