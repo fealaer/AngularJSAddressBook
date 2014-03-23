@@ -3,6 +3,7 @@
 describe('Controller: MainCtrl', function () {
 
   beforeEach(function () {
+    localStorage.clear();
     browser().navigateTo('/');
   });
 
@@ -38,25 +39,25 @@ describe('Controller: MainCtrl', function () {
     element('#sortByName').query(function ($el, done) {
       element('#sortByName a').click();
       $el.hasClass('active');
-      expect(repeater('.contact', 'contact in contacts').column('contact.phoneNumber')).toEqual(['+79255000000', '+79250000000', '+79260000001', '+79250000001']);
+      expect(repeater('.contact', 'contact in contacts').column('contact.phoneNumber')).toEqual(['+7 (925) 500-0000', '+7 (925) 000-0000', '+7 (926) 000-0001', '+7 (925) 000-0001']);
       done();
     });
     element('#sortBySurname').query(function ($el, done) {
       element('#sortBySurname a').click();
       $el.hasClass('active');
-      expect(repeater('.contact', 'contact in contacts').column('contact.phoneNumber')).toEqual(['+79260000001', '+79250000001', '+79255000000', '+79250000000']);
+      expect(repeater('.contact', 'contact in contacts').column('contact.phoneNumber')).toEqual(['+7 (926) 000-0001', '+7 (925) 000-0001', '+7 (925) 500-0000', '+7 (925) 000-0000']);
       done();
     });
     element('#sortByGroup').query(function ($el, done) {
       element('#sortByGroup a').click();
       $el.hasClass('active');
-      expect(repeater('.contact', 'contact in contacts').column('contact.phoneNumber')).toEqual(['+79260000001', '+79255000000', '+79250000000', '+79250000001']);
+      expect(repeater('.contact', 'contact in contacts').column('contact.phoneNumber')).toEqual(['+7 (926) 000-0001', '+7 (925) 500-0000', '+7 (925) 000-0000', '+7 (925) 000-0001']);
       done();
     });
     element('#sortByPhoneNumber').query(function ($el, done) {
       element('#sortByPhoneNumber a').click();
       $el.hasClass('active');
-      expect(repeater('.contact', 'contact in contacts').column('contact.phoneNumber')).toEqual(['+79250000000', '+79250000001', '+79255000000', '+79260000001']);
+      expect(repeater('.contact', 'contact in contacts').column('contact.phoneNumber')).toEqual(['+7 (925) 000-0000', '+7 (925) 000-0001', '+7 (925) 500-0000', '+7 (926) 000-0001']);
       done();
     });
   });
