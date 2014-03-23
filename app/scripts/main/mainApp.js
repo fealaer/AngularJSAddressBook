@@ -5,7 +5,9 @@ angular.module('mainApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'sharedApp'
+  'sharedApp',
+  'ui.bootstrap',
+  'ui.mask'
 ])
   .config(function ($routeProvider) {
     $routeProvider
