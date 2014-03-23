@@ -3,5 +3,6 @@
 angular.module('sharedApp', [
   'ngCookies',
   'ngResource',
-  'ngSanitize'
+  'ngSanitize',
+  'LocalStorageModule'
 ]);
