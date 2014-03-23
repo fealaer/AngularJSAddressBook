@@ -50,7 +50,7 @@
                     </li>
                 </ul>
             </div>
-            <button class="btn btn-success">
+            <button class="btn btn-success" ng-click="add();">
                 <span class="glyphicon glyphicon-plus"></span> {{'New'|l10n:lang}}
             </button>
             </div>
@@ -67,12 +67,16 @@
                 <div>
                     <strong class="media-heading">{{makeTitle(contact)}}</strong>
                 </div>
-                <div>{{contact.phoneNumber}}</div>
+                <div>{{contact.phoneNumber | phone}}</div>
             </div>
             <div class="col-lg-3 col-sm-3 col-md-3 col-xs-5">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span></button>
-                    <button class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                    <button class="btn btn-info" ng-click="edit(contact);">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button class="btn btn-danger" ng-click="delete(contact);">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
                 </div>
             </div>
         </div>
