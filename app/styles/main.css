@@ -77,3 +77,20 @@ div.contact .btn-group {
 .add-btn {
     margin: 9px;
 }
+
+
+.form-contact {
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-contact .form-contact-heading {
+  margin-bottom: 10px;
+}
+
+.form-contact .form-control:focus {
+  z-index: 2;
+}
+
+.modal-dialog {
+ margin: 0px auto;
+}
