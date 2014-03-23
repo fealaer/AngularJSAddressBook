@@ -15,7 +15,13 @@ angular.module('sharedApp')
           'Edit': 'Редактировать',
           'Delete': 'Удалить',
           'Toggle navigation': 'Переключение навигации',
-          'Language': 'Язык'
+          'Language': 'Язык',
+          'Cancel': 'Закрыть',
+          'Save': 'Сохранить',
+          'Please fill out name.': 'Пожайлуйста заполните имя.',
+          'Please fill out phone number.': 'Пожайлуйста заполните номер телефона.',
+          'Error': 'Ошибка',
+          'Contact': 'Контакт'
         }
       };
 
