@@ -4,15 +4,18 @@ angular.module('mainApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'sharedApp',
+  'ui.bootstrap',
+  'ui.mask'
 ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/:lang', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/en'
       });
   });

@@ -4,12 +4,12 @@
                 class="navbar-toggle"
                 data-toggle="collapse"
                 data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
+            <span class="sr-only">{{'Toggle navigation'|l10n:lang}}</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <strong class="navbar-brand">Address Book</strong>
+        <strong class="navbar-brand">{{'Contacts'|l10n:lang}}</strong>
     </div>
     <div class="collapse navbar-collapse">
         <form class="navbar-form navbar-left" role="search">
@@ -17,40 +17,43 @@
                 <input type="text"
                        class="form-control"
                        ng-model="searchString"
-                       placeholder="Search">
+                       placeholder="{{'Search'|l10n:lang}}">
             </div>
         </form>
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a href=""
-                   class="dropdown-toggle"
-                   data-toggle="dropdown">Sort by<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a ng-click="sort='name'; reverse=false;"
-                           id="sortByName"
-                           href="">Name</a>
-                    </li>
-                    <li>
-                        <a ng-click="sort='surname'; reverse=false;"
-                           id="sortBySurname"
-                           href="">Surname</a>
-                    </li>
-                    <li><a ng-click="sort='phoneNumber'; reverse=false;"
-                           id="sortByPhoneNumber"
-                           href="">Phone Number</a>
-                    </li>
-                    <li><a ng-click="sort='group'; reverse=false;"
-                           id="sortByGroup"
-                           href="">Group</a>
+        <div class="btn-group navbar-btn pull-right">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    {{'Language'|l10n:lang}} <b class="caret"></b>
+                </button>
+                <ul class="dropdown-menu lang">
+                    <li ng-repeat="langVariant in langVariants"
+                        ng-class="{active:langVariant.id === lang}"
+                        id="{{langVariant.id}}">
+                        <a href="#/{{langVariant.id}}">{{langVariant.title|l10n:lang}}</a>
                     </li>
                 </ul>
-            </li>
-            <li>
-                <button class="btn btn-success
-                glyphicon glyphicon-plus-sign add-btn"> New</button>
-            </li>
-        </ul>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    {{'Sort by'|l10n:lang}} <b class="caret"></b>
+                </button>
+                <ul class="dropdown-menu sort">
+                    <li ng-repeat="sortByVariant in sortByVariants"
+                        ng-class="{active:sortByVariant.selected}"
+                        id="{{sortByVariant.id}}">
+                        <a ng-click="sortBy(sortByVariant);"
+                           href="">{{sortByVariant.title|l10n:lang}}
+                            <span ng-show="sortByVariant.selected && !reverse"
+                                  class="glyphicon glyphicon-chevron-down pull-right"></span>
+                            <span ng-show="sortByVariant.selected && reverse"
+                                  class="glyphicon glyphicon-chevron-up pull-right"></span></a>
+                    </li>
+                </ul>
+            </div>
+            <button class="btn btn-success" ng-click="add();">
+                <span class="glyphicon glyphicon-plus"></span> {{'New'|l10n:lang}}
+            </button>
+            </div>
     </div>
 </div>
 <div class="media contact"
@@ -64,12 +67,16 @@
                 <div>
                     <strong class="media-heading">{{makeTitle(contact)}}</strong>
                 </div>
-                <div>{{contact.phoneNumber}}</div>
+                <div>{{contact.phoneNumber | phone}}</div>
             </div>
             <div class="col-lg-3 col-sm-3 col-md-3 col-xs-5">
                 <div class="btn-group pull-right">
-                    <button class="btn btn-info glyphicon glyphicon-pencil"> </button>
-                    <button class="btn btn-danger glyphicon glyphicon-trash"> </button>
+                    <button class="btn btn-info" ng-click="edit(contact);">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                    <button class="btn btn-danger" ng-click="delete(contact);">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
                 </div>
             </div>
         </div>
