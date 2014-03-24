@@ -78,19 +78,31 @@ div.contact .btn-group {
     margin: 9px;
 }
 
-
 .form-contact {
-  padding: 15px;
-  margin: 0 auto;
+    padding: 15px;
+    margin: 0 auto;
 }
+
 .form-contact .form-contact-heading {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .form-contact .form-control:focus {
-  z-index: 2;
+    z-index: 2;
 }
 
 .modal-dialog {
- margin: 0px auto;
+    margin: 0px auto;
+}
+
+@media (max-width: 768px) {
+    .navbar-collapse {
+        overflow-y: visible !important;
+    }
+
+    .navbar-form {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        border-top: 0px;
+    }
 }
