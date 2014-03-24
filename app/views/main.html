@@ -53,7 +53,7 @@
             <button class="btn btn-success" ng-click="add();">
                 <span class="glyphicon glyphicon-plus"></span> {{'New'|l10n:lang}}
             </button>
-            </div>
+        </div>
     </div>
 </div>
 <div class="media contact"
@@ -63,13 +63,13 @@
          alt="user">
     <div class="media-body">
         <div class="row">
-            <div class="col-lg-9 col-sm-9 col-md-9 col-xs-7">
+            <div class="col-lg-9 col-sm-9 col-md-9 col-xs-6">
                 <div>
                     <strong class="media-heading">{{makeTitle(contact)}}</strong>
                 </div>
                 <div>{{contact.phoneNumber | phone}}</div>
             </div>
-            <div class="col-lg-3 col-sm-3 col-md-3 col-xs-5">
+            <div class="col-lg-3 col-sm-3 col-md-3 col-xs-6">
                 <div class="btn-group pull-right">
                     <button class="btn btn-info" ng-click="edit(contact);">
                         <span class="glyphicon glyphicon-pencil"></span>
